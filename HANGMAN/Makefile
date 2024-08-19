@@ -1,0 +1,17 @@
+CC = gcc
+CFLAGS = -Wall --std=c99
+OBJECTS = main.o my_string.o generic_vector.o associative_array.o
+#TEST_OBJECTS = unit_test.o test_def.o
+
+string_driver: $(OBJECTS)
+	$(CC) $(CFLAGS) -o string_driver $(OBJECTS)
+my_string.o: my_string.c my_string.h
+	$(CC) $(CFLAGS) -c my_string.c -o my_string.o
+generic_vector.o: generic_vector.c generic_vector.h
+	$(CC) $(CFLAGS) -c generic_vector.c -o generic_vector.o
+main.o: main.c
+	$(CC) $(CFLAGS) -c main.c -o main.o
+associative_array.o: associative_array.c associative_array.h
+	$(CC) $(CFLAGS) -c associative_array.c -o associative_array.o
+clean:
+	rm string_driver  $(OBJECTS) 
